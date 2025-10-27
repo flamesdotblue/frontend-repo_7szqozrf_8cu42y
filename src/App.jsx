@@ -3,20 +3,17 @@ import Navbar from './components/Navbar';
 import Tabs from './components/Tabs';
 import SectionCard from './components/SectionCard';
 import WorkflowSimulator from './components/WorkflowSimulator';
-import { Download, ExternalLink, CheckCircle2, XCircle, Target, BarChart3, Shield, Users } from 'lucide-react';
+import { Download, ExternalLink, CheckCircle2, XCircle, Target } from 'lucide-react';
 
 function App() {
   const [role, setRole] = useState('Manager');
-  const [activeTab, setActiveTab] = useState('Introduction');
+  const [activeTab, setActiveTab] = useState('Process Flow');
   const [notifications, setNotifications] = useState([]);
   const [expandAll, setExpandAll] = useState(true);
   const [expandKey, setExpandKey] = useState(0);
 
   const tabs = useMemo(
     () => [
-      'Introduction',
-      'System Overview',
-      'Functional Requirements',
       'Process Flow',
       'Performance Docs',
       'Evaluation',
@@ -60,153 +57,6 @@ function App() {
             </button>
           </div>
         </div>
-
-        {activeTab === 'Introduction' && (
-          <div className="grid gap-4 lg:grid-cols-2">
-            <SectionCard
-              key={`k-${expandKey}-intro-purpose`}
-              title="Purpose"
-              subtitle="Why this system exists"
-              defaultOpen={expandAll}
-              actions={[{ label: 'View details', icon: ExternalLink, onClick: () => pushNotification({ title: 'Opened Purpose details', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <p>
-                The FRS outlines core features and functionality to streamline performance management: tracking employee performance, enabling collaboration, and supporting data-driven decisions across design, development, and implementation.
-              </p>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-intro-scope`}
-              title="Scope"
-              subtitle="What this covers"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Read more', icon: ExternalLink, onClick: () => pushNotification({ title: 'Viewed Scope', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <p>
-                Focuses on HR processes in the PMS, summarizing goals, expected outcomes, and the boundaries required to derive functional specifications.
-              </p>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-intro-users`}
-              title="Target Users"
-              subtitle="Primary roles supported"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Switch to my role', onClick: () => pushNotification({ title: `Switched context to ${role}`, time: new Date().toLocaleTimeString() }) }]}
-            >
-              <ul className="list-inside list-disc space-y-1">
-                <li>System Administrator</li>
-                <li>Performance Management Administrator</li>
-                <li>Managers</li>
-                <li>Employees</li>
-                <li>HR Personnel</li>
-              </ul>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-intro-objectives`}
-              title="Objectives"
-              subtitle="What success looks like"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Mark as understood', icon: CheckCircle2, variant: 'primary', onClick: () => pushNotification({ title: 'Objectives acknowledged', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <ul className="list-inside list-disc space-y-1">
-                <li>Streamline processes for efficiency and effectiveness.</li>
-                <li>Improve collaboration between managers and employees.</li>
-                <li>Provide reporting and analytics for data-driven evaluations.</li>
-              </ul>
-            </SectionCard>
-          </div>
-        )}
-
-        {activeTab === 'System Overview' && (
-          <div className="grid gap-4 lg:grid-cols-2">
-            <SectionCard
-              key={`k-${expandKey}-overview-architecture`}
-              title="Architecture Overview"
-              subtitle="Modular, scalable components"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Open diagram', icon: ExternalLink, onClick: () => pushNotification({ title: 'Architecture diagram opened', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <p>
-                Components include user management, goal setting, tracking, feedback, and reporting. Data flows from input through tracking to analytics, with integration points for existing HR systems.
-              </p>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-overview-principles`}
-              title="Key Principles"
-              subtitle="Security, UX, and integration"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Security posture', icon: Shield, onClick: () => pushNotification({ title: 'Reviewed security posture', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <ul className="list-inside list-disc space-y-1">
-                <li>Role-based access control and authentication.</li>
-                <li>Responsive, user-friendly interfaces.</li>
-                <li>RESTful API design and documentation.</li>
-              </ul>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-overview-kpis`}
-              title="KPIs & Analytics"
-              subtitle="Track performance outcomes"
-              defaultOpen={expandAll}
-              actions={[{ label: 'View dashboard', icon: BarChart3, onClick: () => pushNotification({ title: 'Analytics dashboard opened', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <p>
-                Customizable dashboards, reports, and exports enable monitoring and data-driven decisions.
-              </p>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-overview-users`}
-              title="People & Roles"
-              subtitle="Who does what"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Manage roles', icon: Users, onClick: () => pushNotification({ title: 'Role management viewed', time: new Date().toLocaleTimeString() }) }]}
-            >
-              <p>
-                Administrators manage accounts and permissions. Managers set goals and reviews. Employees contribute goals and self-evaluations. HR oversees compliance and process.
-              </p>
-            </SectionCard>
-          </div>
-        )}
-
-        {activeTab === 'Functional Requirements' && (
-          <div className="grid gap-4 lg:grid-cols-2">
-            <SectionCard
-              key={`k-${expandKey}-frs-highlevel`}
-              title="High-Level Requirements"
-              subtitle="Core capabilities"
-              defaultOpen={expandAll}
-              actions={[{ label: 'Download list', icon: Download, onClick: handleDownload('High-Level Requirements') }]}
-            >
-              <ul className="list-inside list-disc space-y-1">
-                <li>User Management (roles, permissions, auth)</li>
-                <li>Goal Setting and Tracking</li>
-                <li>Feedback and Evaluations</li>
-                <li>Reporting & Analytics</li>
-                <li>Integrations and Security Compliance</li>
-                <li>UX, Customization, and Scalability</li>
-              </ul>
-            </SectionCard>
-
-            <SectionCard
-              key={`k-${expandKey}-frs-roles`}
-              title="Roles & Responsibilities"
-              subtitle="What each role can do"
-              defaultOpen={expandAll}
-            >
-              <ul className="list-inside list-disc space-y-1">
-                <li>System Admin: manage users and permissions.</li>
-                <li>Managers: set goals, review, and provide feedback.</li>
-                <li>Employees: access goals, submit self-evals.</li>
-                <li>HR: oversee process and compliance.</li>
-              </ul>
-            </SectionCard>
-          </div>
-        )}
 
         {activeTab === 'Process Flow' && (
           <div className="space-y-4">

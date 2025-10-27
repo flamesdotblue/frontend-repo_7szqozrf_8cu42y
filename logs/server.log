@@ -3,29 +3,17 @@
 > vite
 
 
-  VITE v5.4.20  ready in 207 ms
+  VITE v5.4.20  ready in 201 ms
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.20.18.90:3000/
-1:21:58 AM [vite] warning: The character ">" is not valid inside a JSX element
-247|              >
-248|                <p>
-249|                  Supports manual and scheduled processes, deadline extensions, weight validations (preventing >100%), and notifications throughout the cycle.
+1:45:24 AM [vite] warning: The character ">" is not valid inside a JSX element
+97 |              >
+98 |                <p>
+99 |                  Supports manual and scheduled processes, deadline extensions, weight validations (preventing >100%), and notifications throughout the cycle.
    |                                                                                                               ^
-250|                </p>
-251|              </SectionCard>
-
-  Plugin: vite:esbuild
-  File: /home/workspace/src/App.jsx
-1:21:59 AM [vite] ✨ new dependencies optimized: lucide-react
-1:21:59 AM [vite] ✨ optimized dependencies changed. reloading
-1:21:59 AM [vite] warning: The character ">" is not valid inside a JSX element
-247|              >
-248|                <p>
-249|                  Supports manual and scheduled processes, deadline extensions, weight validations (preventing >100%), and notifications throughout the cycle.
-   |                                                                                                               ^
-250|                </p>
-251|              </SectionCard>
+100|                </p>
+101|              </SectionCard>
 
   Plugin: vite:esbuild
   File: /home/workspace/src/App.jsx
